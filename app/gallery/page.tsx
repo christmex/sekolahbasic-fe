@@ -26,7 +26,7 @@ export default function Gallery() {
           description="Explore our vibrant community through the lens. From academic breakthroughs to spiritual growth and sports achievements, see how we shape minds and build character."
         />
 
-        <div className="sticky top-[175px] lg:top-[140px] z-40 bg-white border-b border-gray-200 transition-all duration-300">
+        <div className="sticky top-[170px] lg:top-[140px] z-40 bg-white border-b border-gray-200 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex overflow-x-auto w-full md:w-auto gap-2 no-scrollbar pb-1 md:pb-0">
