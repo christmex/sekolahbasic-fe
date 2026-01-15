@@ -13,7 +13,7 @@ import Image from "next/image";
           title={
             <>
               Rooted in Faith, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9e1b66] to-[#A82C51]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#9e1b66] to-[#A82C51]">
                 Growing in Excellence.
               </span>
             </>
@@ -89,11 +89,38 @@ import Image from "next/image";
         </div>
 
         {/* Goals */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
                 
 
                 <div className="lg:col-span-7 flex flex-col justify-center">
+                    <div className="bg-linear-to-br from-[#0185C3] to-[#006494] rounded-2xl p-8 shadow-lg text-white relative overflow-hidden">
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-quote w-10 h-10 text-white/20 absolute top-6 right-6"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+                        
+                        <div className="relative z-10 space-y-4 font-light leading-relaxed text-white/90">
+                            <p className="">
+                                "It is a pleasure to give the best experiences for students by interesting programs and good curriculum. We want them having good characters and intellectual and they also can transfer it to the parents and people."
+                            </p>
+                            <p className="">
+                                "I believe we can do all of these by working together and walk in with God. For God to be The Glory."
+                            </p>
+                        </div>
+                        
+                        <div className="mt-8 pt-6 border-t border-white/20 flex items-center gap-3">
+                             <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-[10px] text-white">SKB</div>
+                             <span className="text-xs font-medium text-white/80">Sekolah Kristen BASIC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="lg:col-span-5 order-first flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="p-2 bg-[#0185C3]/10 rounded-lg text-[#0185C3]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-mountain-snow w-5 h-5"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path><path d="M4.14 1 7.86.42 2.74 1.94 5.49 2 8.23.19"></path></svg>
+                        </div>
+                        <h2 className="text-xl font-semibold tracking-tight text-gray-900">Our Goals</h2>
+                    </div>
                     <div className="grid gap-4">
                         <div className="group flex gap-5 p-6 rounded-xl border border-gray-100 bg-white hover:border-[#0185C3]/30 hover:shadow-md transition-all duration-300">
                             <div className="shrink-0">
@@ -130,34 +157,6 @@ import Image from "next/image";
                         </div>
                     </div>
                 </div>
-
-                <div className="lg:col-span-5 order-first flex flex-col justify-center">
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-[#0185C3]/10 rounded-lg text-[#0185C3]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-mountain-snow w-5 h-5"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path><path d="M4.14 1 7.86.42 2.74 1.94 5.49 2 8.23.19"></path></svg>
-                        </div>
-                        <h2 className="text-xl font-semibold tracking-tight text-gray-900">Our Goals</h2>
-                    </div>
-                    
-                    <div className="bg-gradient-to-br from-[#0185C3] to-[#006494] rounded-2xl p-8 shadow-lg text-white relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-quote w-10 h-10 text-white/20 absolute top-6 right-6"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
-                        
-                        <div className="relative z-10 space-y-4 font-light leading-relaxed text-white/90">
-                            <p className="">
-                                "It is a pleasure to give the best experiences for students by interesting programs and good curriculum. We want them having good characters and intellectual and they also can transfer it to the parents and people."
-                            </p>
-                            <p className="">
-                                "I believe we can do all of these by working together and walk in with God. For God to be The Glory."
-                            </p>
-                        </div>
-                        
-                        <div className="mt-8 pt-6 border-t border-white/20 flex items-center gap-3">
-                             <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-[10px] text-white">SKB</div>
-                             <span className="text-xs font-medium text-white/80">Sekolah Kristen BASIC</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -176,7 +175,7 @@ import Image from "next/image";
                                     height={1000}
                                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6">
                                     <p className="text-white font-semibold text-sm">Drs. Rusdi Tanuwijaya, S.Th</p>
                                     <p className="text-white/70 text-[10px] uppercase tracking-wider">Founder &amp; Chairman</p>
                                 </div>

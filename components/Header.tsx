@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
+import { Search,User } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 // Import data menu dari folder config. 
 // Kalau error '@/', ganti jadi relative path: '../config/menu'
@@ -86,7 +86,7 @@ export default function Header() {
 
           {/* Right Utility */}
           <div className="w-full lg:w-auto flex flex-col items-end gap-3">
-            <div className="flex items-center gap-6 text-xs font-medium text-gray-500">
+            <div className="hidden lg:flex items-center gap-6 text-xs font-medium text-gray-500">
               {['Admissions', 'Careers', 'Contact'].map((item) => (
                 <Link key={item} href="#" className="hover:text-[#9e1b66] transition-colors">
                   {item}
@@ -102,9 +102,9 @@ export default function Header() {
                 />
                 <Search className="absolute right-2 top-2 w-3.5 h-3.5 text-gray-400" />
               </div>
-              <button className="bg-black text-white px-4 py-2 rounded-md text-xs font-medium hover:bg-gray-800 transition-colors whitespace-nowrap">
-                Portal
-              </button>
+              {/* <button className="flex flex-inline gap-2 bg-black text-white px-4 py-2 rounded-md text-xs font-medium hover:bg-gray-800 transition-colors whitespace-nowrap cursor-pointer">
+                <User className="w-4 h-4" />Login
+              </button> */}
             </div>
           </div>
         </div>
