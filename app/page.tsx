@@ -333,7 +333,7 @@ export default function Home() {
           </div> 
         </div> 
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-40" id="our-school">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-50 lg:scroll-mt-40" id="our-school">
             <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Our Schools</h2>
                 <span className="text-xs text-gray-500 hidden sm:inline-block">Two locations, one vision.</span>
