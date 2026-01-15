@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
         {/* Hero Section */}
-        <div className="bg-linear-to-r from-[#9e1b66] to-[#2c1b4e] text-white relative overflow-hidden">
+        <div className="bg-linear-to-r from-[#9e1b66] to-[#2c1b4e] text-white relative overflow-hidden scroll-mt-50">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-50"></div>
           {/* Decorative curve bottom right */}
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 min-h-[550px]">
