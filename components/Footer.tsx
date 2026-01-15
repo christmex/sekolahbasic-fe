@@ -1,3 +1,5 @@
+import { Mail, MapPin, Phone } from "lucide-react";
+
 export default function Footer() {
     return (
         <footer className="bg-white border-t border-gray-200 pt-16"> 
@@ -44,9 +46,9 @@ export default function Footer() {
                     <div>
                         <h4 className="font-semibold text-gray-900 text-sm mb-4">Contact</h4>
                         <ul className="space-y-2 text-xs text-gray-500">
-                            <li className="flex items-start gap-2"><i data-lucide="map-pin" className="w-3 h-3 mt-0.5"></i> Batam, Indonesia</li>
-                            <li className="flex items-center gap-2"><i data-lucide="phone" className="w-3 h-3"></i> +62 778 1234 5678</li>
-                            <li className="flex items-center gap-2"><i data-lucide="mail" className="w-3 h-3"></i> info@sekolahbasic.sch.id</li>
+                            <li className="flex items-start gap-2"><MapPin className="w-3 h-3 mt-0.5" /> Batam, Indonesia</li>
+                            <li className="flex items-center gap-2"><Phone className="w-3 h-3" /> +62 778 1234 5678</li>
+                            <li className="flex items-center gap-2"><Mail className="w-3 h-3" /> info@sekolahbasic.sch.id</li>
                         </ul>
                     </div>
                 </div>
