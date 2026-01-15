@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,9 +59,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${inter.variable} antialiased bg-gray-50 text-gray-800 selection:bg-(--basic-i-color) selection:text-gray-800`}
       >
-        {children}
+        <Header />
+
+        {/* Main Content Wrapper */}
+        <main>
+          {children}
+        </main>
+
+        <Footer />
       </body>
     </html>
   );
