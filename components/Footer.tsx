@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -16,10 +16,10 @@ export default function Footer() {
                             Educating for eternity. Transforming lives through Christ-centered education since 2004.
                         </p>
                         <div className="flex gap-4 text-gray-400"> 
-                            <a href="#"><i data-lucide="facebook" className="w-4 h-4 hover:text-[#9e1b66] transition-colors"></i></a> 
-                            <a href="#"><i data-lucide="instagram" className="w-4 h-4 hover:text-[#9e1b66] transition-colors"></i></a> 
-                            <a href="#"><i data-lucide="linkedin" className="w-4 h-4 hover:text-[#9e1b66] transition-colors"></i></a> 
-                            <a href="#"><i data-lucide="youtube" className="w-4 h-4 hover:text-[#9e1b66] transition-colors"></i></a> 
+                            <a href="#"><Facebook className="w-4 h-4 hover:text-[#9e1b66] transition-colors" /></a> 
+                            <a href="#"><Instagram className="w-4 h-4 hover:text-[#9e1b66] transition-colors" /></a> 
+                            <a href="#"><Linkedin className="w-4 h-4 hover:text-[#9e1b66] transition-colors" /></a> 
+                            <a href="#"><Youtube className="w-4 h-4 hover:text-[#9e1b66] transition-colors" /></a> 
                         </div> 
                     </div>
                     
