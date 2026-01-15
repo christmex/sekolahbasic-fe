@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Search, ChevronDown } from "lucide-react";
+import { Search } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 // Import data menu dari folder config. 
 // Kalau error '@/', ganti jadi relative path: '../config/menu'
 import { MENU_ITEMS } from "@/config/menu"; 
@@ -13,6 +14,36 @@ const cn = (...classes: (string | undefined | null | false)[]) => classes.filter
 
 export default function Header() {
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement | null>(null);
+  const [showLeftFade, setShowLeftFade] = useState(false);
+  const [showRightFade, setShowRightFade] = useState(false);
+
+  const navItems = useMemo(() => MENU_ITEMS, []);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+
+    const update = () => {
+      // Use a small epsilon to avoid flicker from fractional scroll values
+      const epsilon = 1;
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+      setShowLeftFade(el.scrollLeft > epsilon);
+      setShowRightFade(el.scrollLeft < maxScrollLeft - epsilon);
+    };
+
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+
+    // Recalculate on resize / font load / viewport changes
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+
+    return () => {
+      el.removeEventListener("scroll", update);
+      ro.disconnect();
+    };
+  }, []);
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-xl">
@@ -82,64 +113,47 @@ export default function Header() {
       {/* 3. NAVIGATION BAR */}
       <div className="border-t border-gray-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-6 text-xs font-medium text-gray-600 overflow-x-auto no-scrollbar lg:overflow-visible">
-          {MENU_ITEMS.map((item) => {
-            const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/');
-            const hasDropdown = item.children && item.children.length > 0;
+          <div className="relative">
+            {/* Scroll indicator fades (left/right) */}
+            <div
+              aria-hidden="true"
+              className={cn(
+                "pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent transition-opacity duration-200",
+                showLeftFade ? "opacity-100" : "opacity-0"
+              )}
+            />
+            <div
+              aria-hidden="true"
+              className={cn(
+                "pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent transition-opacity duration-200",
+                showRightFade ? "opacity-100" : "opacity-0"
+              )}
+            />
 
-            return (
-              /* 'group' untuk handle hover di desktop.
-                Kita tambahkan 'relative' hanya di desktop (lg) agar dropdown melayang.
-                Di mobile, kita biarkan static agar dropdown mendorong lebar/tinggi nav.
-              */
-              <div key={item.label} className="group lg:relative flex flex-col justify-center min-h-[45px]">
+            <nav
+              ref={navRef}
+              className="flex items-center gap-6 text-xs font-medium text-gray-600 overflow-x-auto no-scrollbar"
+            >
+              {navItems.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href));
+
+              return (
                 <Link
+                  key={item.label}
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-1 whitespace-nowrap transition-colors py-3 px-1",
+                    "whitespace-nowrap py-3 px-1 transition-colors",
                     isActive ? "text-[#9e1b66]" : "hover:text-[#9e1b66]"
                   )}
                 >
                   {item.label}
-                  {hasDropdown && (
-                    <ChevronDown className="w-3 h-3 text-gray-400 group-hover:text-[#9e1b66] transition-transform group-hover:rotate-180" />
-                  )}
                 </Link>
-
-                {/* INDICATOR LINE (Tetap di track yang sama) */}
-                <div
-                  className={cn(
-                    "absolute bottom-0 left-0 w-full h-[2px] bg-[#9e1b66] transform transition-all duration-300 translate-y-[1px]",
-                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                  )}
-                />
-
-                {/* DROPDOWN MENU */}
-                {hasDropdown && (
-                  <div className={cn(
-                    "z-60 transition-all duration-200",
-                    // Mobile: Posisi normal, sembunyi kecuali 'group-focus' atau hover (tap di mobile trigger hover)
-                    "hidden group-hover:block lg:absolute lg:top-full lg:left-0 lg:w-48 lg:pt-1",
-                    // Desktop: Melayang kembali
-                    "lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible lg:transform lg:translate-y-2 lg:group-hover:translate-y-0"
-                  )}>
-                    <div className="bg-white lg:border lg:border-gray-100 lg:shadow-xl py-1 rounded-b-md">
-                      {item.children?.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-gray-600 hover:bg-pink-50 hover:text-[#9e1b66] transition-colors text-[10px] lg:text-xs whitespace-nowrap"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </nav>
+              );
+            })}
+            </nav>
+          </div>
         </div>
       </div>
     </header>
