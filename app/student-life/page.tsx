@@ -26,7 +26,7 @@ export default function StudentLife() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="flex flex-col md:flex-row gap-12">
                 <div className="md:w-1/3">
-                    <div className="sticky top-24">
+                    <div className="sticky top-40">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 w-fit mb-4">
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                             <span className="text-[10px] uppercase tracking-wider font-medium text-blue-800">Routine</span>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { 
   ChevronRight, 
@@ -126,7 +127,9 @@ export default function Home() {
               <section> 
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="text-xl font-semibold tracking-tight text-gray-900">Latest events</h2> 
-                  <a href="#" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">View all <ArrowRight className="w-3 h-3" /></a>
+                  <Link href="/gallery" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">
+                    View gallery <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> 
@@ -189,7 +192,9 @@ export default function Home() {
               <section> 
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="text-xl font-semibold tracking-tight text-gray-900">Academic News</h2> 
-                  <a href="#" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">View all <ArrowRight className="w-3 h-3" /></a>
+                  <Link href="/news" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">
+                    View all news <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
                 <div className="grid md:grid-cols-3 gap-6"> 
                   {/* News Card 1 */} 

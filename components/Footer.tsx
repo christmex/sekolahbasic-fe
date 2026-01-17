@@ -8,7 +8,7 @@ export default function Footer() {
                     <div className="col-span-1 md:col-span-1">
                         <div className="flex items-center gap-3 mb-6"> 
                             <div className="h-8 w-8 rounded flex items-center justify-center text-white font-bold text-xs">
-                                <img src="logo-sekolah-basic.gif" alt="" />
+                                <img src="logo-sekolah-basic.gif" alt="Logo Sekolah BASIC" />
                             </div> 
                             <div className="leading-tight text-xs uppercase tracking-wide font-bold text-black"> Sekolah <br />Kristen BASIC </div> 
                         </div> 
