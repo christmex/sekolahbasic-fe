@@ -271,14 +271,14 @@ export default async function Home() {
               <section> 
                 <h2 className="text-lg font-semibold tracking-tight text-gray-900 mb-6"> Careers </h2> 
                 <div className="space-y-3"> 
-                  <a href="#" className="block bg-white border border-gray-200 p-4 rounded-lg shadow-sm hover:border-[#9e1b66] transition-colors group"> 
+                  <a href="#" className="block bg-white border border-gray-200 p-4 rounded-lg hover:border-[#9e1b66] transition-colors group"> 
                     <div className="flex justify-between items-start mb-1">
                       <h3 className="font-medium text-gray-900 text-sm group-hover:text-[#9e1b66]">Primary Teacher</h3> 
                       <span className="bg-gray-100 text-gray-600 text-[10px] px-1.5 py-0.5 rounded">Closed</span>
                     </div>
                     <p className="text-xs text-gray-500 mb-2">SD Basic 2</p> 
                   </a> 
-                  <a href="#" className="block bg-white border border-gray-200 p-4 rounded-lg shadow-sm hover:border-[#9e1b66] transition-colors group"> 
+                  <a href="#" className="block bg-white border border-gray-200 p-4 rounded-lg hover:border-[#9e1b66] transition-colors group"> 
                     <div className="flex justify-between items-start mb-1">
                       <h3 className="font-medium text-gray-900 text-sm group-hover:text-[#9e1b66]">IT Support Specialist</h3> 
                       <span className="bg-gray-100 text-gray-600 text-[10px] px-1.5 py-0.5 rounded">Closed</span>
@@ -301,7 +301,7 @@ export default async function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <a href="#" className="group block h-full">
-                    <div className="bg-white rounded-xl border border-gray-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] overflow-hidden h-full hover:shadow-[0_20px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <div className="bg-white rounded-xl border border-gray-100 overflow-hidden h-full hover:shadow-[0_20px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
                         <div className="relative h-64 overflow-hidden">
                             <Image
                               src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
@@ -310,7 +310,7 @@ export default async function Home() {
                               height={500}
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
                             <div className="absolute bottom-4 left-4 right-4">
                                 <span className="bg-[#9e1b66] text-white text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider mb-2 inline-block">Batam Kota</span>
                                 <div className="flex gap-2 mt-1">
@@ -346,7 +346,7 @@ export default async function Home() {
                 </a>
 
                 <a href="#" className="group block h-full">
-                    <div className="bg-white rounded-xl border border-gray-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] overflow-hidden h-full hover:shadow-[0_20px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+                    <div className="bg-white rounded-xl border border-gray-100 overflow-hidden h-full hover:shadow-[0_20px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
                         <div className="relative h-64 overflow-hidden">
                           <Image
                               src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
