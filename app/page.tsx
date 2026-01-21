@@ -1,3 +1,5 @@
+import { getUpcomingEvents } from "@/lib/api/events";
+import { UpcomingEvents } from "@/components/events/UpcomingEvents";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -13,7 +15,10 @@ import {
   Phone
 } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+
+  const events = await getUpcomingEvents();
+
   return (
     <>
         {/* Hero Section */}
@@ -260,58 +265,7 @@ export default function Home() {
             {/* Sidebar Column (Right ~33%) */} 
             <div className="lg:col-span-4 flex flex-col gap-12"> 
               
-              {/* Upcoming Events Widget */} 
-              <section> 
-                <h2 className="text-lg font-semibold tracking-tight text-gray-900 mb-6 flex items-center"> Upcoming Calendar </h2> 
-                <div className="space-y-3"> 
-                  {/* Event 1 */} 
-                  <a href="#" className="flex gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:border-gray-300 transition-colors group"> 
-                    <div className="flex flex-col w-12 shrink-0 rounded overflow-hidden text-center border border-gray-100"> 
-                      <div className="bg-gray-50 text-gray-500 text-[10px] py-0.5 font-medium uppercase">Feb</div> 
-                      <div className="bg-white text-gray-900 font-bold text-xl py-1 flex items-center justify-center h-full"> 
-                        <span>02</span> 
-                      </div> 
-                    </div> 
-                    <div className="py-0.5"> 
-                      <h4 className="font-semibold text-gray-900 text-sm group-hover:text-[#9e1b66] transition-colors">Chinese New Year</h4> 
-                      <div className="flex items-center gap-1.5 mt-1 text-xs text-gray-500">
-                        <Clock className="w-3 h-3" /> 09:00 AM - BCS Mall
-                      </div>
-                    </div> 
-                  </a> 
-                  {/* Event 2 */} 
-                  <a href="#" className="flex gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:border-gray-300 transition-colors group"> 
-                    <div className="flex flex-col w-12 shrink-0 rounded overflow-hidden text-center border border-gray-100"> 
-                      <div className="bg-[#FFC627] text-black text-[10px] py-0.5 font-medium uppercase">Mar</div> 
-                      <div className="bg-white text-gray-900 font-bold text-xl py-1 flex items-center justify-center h-full"> 
-                        <span>05</span> 
-                      </div> 
-                    </div> 
-                    <div className="py-0.5"> 
-                      <h4 className="font-semibold text-gray-900 text-sm group-hover:text-[#9e1b66] transition-colors">Basic Cup 2026</h4> 
-                      <div className="flex items-center gap-1.5 mt-1 text-xs text-gray-500">
-                        <Clock className="w-3 h-3" /> All Day - Sports Hall
-                      </div>
-                    </div> 
-                  </a> 
-                  {/* Event 3 */} 
-                  <a href="#" className="flex gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:border-gray-300 transition-colors group"> 
-                    <div className="flex flex-col w-12 shrink-0 rounded overflow-hidden text-center border border-gray-100"> 
-                      <div className="bg-gray-50 text-gray-500 text-[10px] py-0.5 font-medium uppercase">Apr</div> 
-                      <div className="bg-white text-gray-900 font-bold text-xl py-1 flex items-center justify-center h-full"> 
-                        <span>12</span> 
-                      </div> 
-                    </div> 
-                    <div className="py-0.5"> 
-                      <h4 className="font-semibold text-gray-900 text-sm group-hover:text-[#9e1b66] transition-colors">Easter Service</h4> 
-                      <div className="flex items-center gap-1.5 mt-1 text-xs text-gray-500">
-                        <Clock className="w-3 h-3" /> 08:00 AM - Chapel
-                      </div>
-                    </div> 
-                  </a> 
-                </div> 
-                <button className="w-full mt-4 py-2 text-xs font-medium text-gray-500 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">View Full Calendar</button>
-              </section> 
+              <UpcomingEvents events={events} />
               
               {/* Quick Stats / Featured Jobs */} 
               <section> 
