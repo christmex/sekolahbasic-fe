@@ -7,7 +7,7 @@ export async function getGalleries() {
     );
 
   if (!res.ok) {
-      throw new Error("Failed to fetch events");
+      throw new Error("Failed to fetch galleries");
   }
 
   const json = await res.json();

@@ -26,7 +26,7 @@ export function GalleryItem({ item }: Props) {
             unoptimized={process.env.NODE_ENV === 'development'}
             className="w-full h-full object-cover" 
           /> 
-          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80"></div> 
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
           <div className="absolute bottom-4 left-4 right-4 text-white"> 
             <div className="flex items-center gap-2 mb-2">
               {/* <span className="text-[10px] font-bold uppercase tracking-wider bg-[#FFC627] text-black px-1.5 py-0.5 rounded-sm">Event</span> */}
