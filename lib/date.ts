@@ -1,28 +1,20 @@
-export function formatEventDate(date: string) {
-    const eventDate = new Date(date);
+export function formatEventDate(dateString: string) {
+  // 1. Take only the first 10 characters (YYYY-MM-DD) 
+  // to ignore the time and timezone "Z" completely
+  const cleanDate = dateString.substring(0, 10);
   
-    return {
-      day: eventDate.getDate().toString().padStart(2, "0"),
-      month: eventDate.toLocaleString("en-US", { month: "short" }),
-    };
-  }
+  const [year, month, day] = cleanDate.split("-").map(Number);
   
-  export function formatEventTime(event: {
-    starts_at: string;
-    ends_at: string;
-  }) {
-    const start = new Date(event.starts_at);
-    const end = new Date(event.ends_at);
-  
-    if (
-      start.toDateString() !== end.toDateString()
-    ) {
-      return "All Day";
-    }
-  
-    return `${start.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}`;
-  }
-  
+  // 2. Create date in local time
+  const eventDate = new Date(year, month - 1, day);
+
+  return {
+    day: day.toString().padStart(2, "0"),
+    month: eventDate.toLocaleString("en-US", { month: "short" }),
+    fullDate: eventDate.toLocaleString("en-US", { 
+      month: "short", 
+      day: "numeric", 
+      year: "numeric" 
+    }),
+  };
+}

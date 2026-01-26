@@ -199,9 +199,7 @@ import Image from "next/image";
                                     Today, Sekolah Kristen Basic serves multiple educational levels across Batam Center and Batu Aji, continuing the vision entrusted to our founder, Drs. Rusdi Tanuwijaya, S.Th., and his family. Our prayer remains unchanged: that God’s love and guidance will continue to flow through this institution, shaping generations of students who reflect Christ-like character grounded in faith, strong in integrity, and prepared to serve their calling in the world.
                                 </p>
                             </div>
-                            <div className="mt-8">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" alt="Signature" className="h-12 opacity-60" />
-                            </div>
+                            
                         </div>
 
                     </div>

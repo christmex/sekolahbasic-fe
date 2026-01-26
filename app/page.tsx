@@ -1,4 +1,5 @@
 import { getUpcomingEvents } from "@/lib/api/events";
+import { getGalleries } from "@/lib/api/galleries";
 import { UpcomingEvents } from "@/components/events/UpcomingEvents";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,10 +15,13 @@ import {
   MapPin,
   Phone
 } from "lucide-react";
+import { Galleries } from "@/components/galleries/Galleries";
 
 export default async function Home() {
 
   const events = await getUpcomingEvents();
+
+  const galleries = await getGalleries();
 
   return (
     <>
@@ -129,72 +133,10 @@ export default async function Home() {
             <div className="lg:col-span-8 flex flex-col gap-16"> 
               
               {/* Latest Events Gallery */} 
-              <section> 
-                <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-xl font-semibold tracking-tight text-gray-900">Latest events</h2> 
-                  <Link href="/gallery" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">
-                    View gallery <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> 
-                  {/* Album Card 1 */} 
-                  <a href="#" className="group block relative cursor-pointer"> 
-                    <div className="relative w-full aspect-4/3 perspective-1000"> 
-                      {/* Background Stack Layer */} 
-                      <div className="absolute inset-0 bg-gray-100 rounded-xl transform translate-x-2 -translate-y-2 rotate-3 transition-transform duration-300 group-hover:translate-x-3 group-hover:rotate-6 border border-gray-200"></div> 
-                      {/* Main Image Card */} 
-                      <div className="relative w-full h-full rounded-xl overflow-hidden border border-gray-200 bg-white transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"> 
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop" alt="Christmas Event" className="w-full h-full object-cover" /> 
-                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80"></div> 
-                        <div className="absolute bottom-4 left-4 right-4 text-white"> 
-                          <div className="flex items-center gap-2 mb-2"> 
-                            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#FFC627] text-black px-1.5 py-0.5 rounded-sm">Event</span>
-                          </div> 
-                          <h3 className="font-medium text-sm leading-tight">Christmas Celebration &amp; Worship</h3> 
-                        </div> 
-                      </div> 
-                    </div> 
-                  </a> 
-                  
-                  {/* Album Card 2 */} 
-                  <a href="#" className="group block relative cursor-pointer"> 
-                    <div className="relative w-full aspect-4/3"> 
-                      <div className="absolute inset-0 bg-gray-100 rounded-xl transform translate-x-2 -translate-y-2 rotate-3 transition-transform duration-300 group-hover:translate-x-3 group-hover:rotate-6 border border-gray-200"></div> 
-                      <div className="relative w-full h-full rounded-xl overflow-hidden border border-gray-200 bg-white transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"> 
-                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop" alt="Family Gathering" className="w-full h-full object-cover" /> 
-                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80"></div> 
-                        <div className="absolute bottom-4 left-4 right-4 text-white"> 
-                          <div className="flex items-center gap-2 mb-2"> 
-                            <span className="text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/20 px-1.5 py-0.5 rounded-sm">Community</span>
-                          </div> 
-                          <h3 className="font-medium text-sm leading-tight">Family Gathering 2025</h3> 
-                        </div> 
-                      </div> 
-                    </div> 
-                  </a> 
-
-                  {/* Album Card 3 */} 
-                  <a href="#" className="group block relative cursor-pointer"> 
-                    <div className="relative w-full aspect-4/3"> 
-                      <div className="absolute inset-0 bg-gray-100 rounded-xl transform translate-x-2 -translate-y-2 rotate-3 transition-transform duration-300 group-hover:translate-x-3 group-hover:rotate-6 border border-gray-200"></div> 
-                      <div className="relative w-full h-full rounded-xl overflow-hidden border border-gray-200 bg-white transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"> 
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="Open House" className="w-full h-full object-cover" /> 
-                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80"></div> 
-                        <div className="absolute bottom-4 left-4 right-4 text-white"> 
-                          <div className="flex items-center gap-2 mb-2"> 
-                            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#FFC627] text-black px-1.5 py-0.5 rounded-sm">Admissions</span>
-                          </div> 
-                          <h3 className="font-medium text-sm leading-tight">Open House &amp; Tour</h3> 
-                        </div> 
-                      </div> 
-                    </div> 
-                  </a> 
-                </div> 
-              </section> 
+              <Galleries galleries={galleries} />
               
               {/* News Section */} 
-              <section> 
+              {/* <section> 
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="text-xl font-semibold tracking-tight text-gray-900">Academic News</h2> 
                   <Link href="/news" className="text-xs font-medium text-[#9e1b66] hover:underline flex items-center gap-1">
@@ -202,7 +144,7 @@ export default async function Home() {
                   </Link>
                 </div>
                 <div className="grid md:grid-cols-3 gap-6"> 
-                  {/* News Card 1 */} 
+                  
                   <article className="flex flex-col h-full group cursor-pointer"> 
                     <div className="h-40 overflow-hidden rounded-lg bg-gray-200 mb-4 relative"> 
                       <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop" alt="Gifted" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /> 
@@ -221,7 +163,6 @@ export default async function Home() {
                     </div> 
                   </article> 
                   
-                  {/* News Card 2 */} 
                   <article className="flex flex-col h-full group cursor-pointer"> 
                     <div className="h-40 overflow-hidden rounded-lg bg-gray-200 mb-4 relative"> 
                       <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop" alt="Assistance" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /> 
@@ -240,7 +181,6 @@ export default async function Home() {
                     </div> 
                   </article> 
 
-                  {/* News Card 3 */} 
                   <article className="flex flex-col h-full group cursor-pointer"> 
                     <div className="h-40 overflow-hidden rounded-lg bg-gray-200 mb-4 relative"> 
                       <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop" alt="Podcast" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /> 
@@ -259,7 +199,7 @@ export default async function Home() {
                     </div> 
                   </article> 
                 </div> 
-              </section> 
+              </section> */}
             </div> 
             
             {/* Sidebar Column (Right ~33%) */} 
@@ -268,7 +208,7 @@ export default async function Home() {
               <UpcomingEvents events={events} />
               
               {/* Quick Stats / Featured Jobs */} 
-              <section> 
+              {/* <section> 
                 <h2 className="text-lg font-semibold tracking-tight text-gray-900 mb-6"> Careers </h2> 
                 <div className="space-y-3"> 
                   <a href="#" className="block bg-white border border-gray-200 p-4 rounded-lg hover:border-[#9e1b66] transition-colors group"> 
@@ -287,7 +227,7 @@ export default async function Home() {
                   </a> 
                 </div> 
                 <button className="w-full mt-4 py-2 text-xs font-medium text-gray-500 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">View Available Position</button>
-              </section> 
+              </section>  */}
             </div> 
           </div> 
         </div> 

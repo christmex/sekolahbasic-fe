@@ -40,7 +40,7 @@ export default function News() {
                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all h-full flex flex-col">
                         <div className="relative h-64 overflow-hidden">
                             <Image
-                              src="https://images.unsplash.com/photo-1577896333243-d09a96ea82a7?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
                               alt="Students learning together in classroom"
                               width={800}
                               height={400}

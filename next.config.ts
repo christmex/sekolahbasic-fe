@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "hoirqrkdgbmvpwutwuwj.supabase.co",
       },
+      {
+        protocol: 'https',
+        hostname: 'filamic.test',
+        port: '', // Biarkan kosong kalau standar https
+        pathname: '/storage/**',
+      },
     ],
   },
 };
