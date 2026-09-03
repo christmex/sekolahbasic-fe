@@ -6,6 +6,7 @@ import {
   FlaskConical,
   Languages,
   Globe2,
+  Mountain,
   Cross,
   MessageSquare,
   GraduationCap,
@@ -14,6 +15,7 @@ import {
   ArrowRight,
   Mail,
   CheckCircle2,
+  XCircle,
 } from "lucide-react";
 
 type Position = {
@@ -22,6 +24,7 @@ type Position = {
   icon: React.ReactNode;
   color: string;
   level?: string;
+  closed?: boolean;
 };
 
 type School = {
@@ -40,18 +43,21 @@ const SCHOOLS: School[] = [
         count: 2,
         icon: <Calculator className="w-5 h-5" />,
         color: "bg-blue-50 text-blue-700",
+        closed: true,
       },
       {
         title: "Science Teacher",
         count: 1,
         icon: <FlaskConical className="w-5 h-5" />,
         color: "bg-emerald-50 text-emerald-700",
+        closed: true,
       },
       {
         title: "English Teacher",
         count: 1,
         icon: <Languages className="w-5 h-5" />,
         color: "bg-amber-50 text-amber-700",
+        closed: true,
       },
     ],
   },
@@ -64,6 +70,13 @@ const SCHOOLS: School[] = [
         count: 1,
         icon: <Globe2 className="w-5 h-5" />,
         color: "bg-rose-50 text-rose-700",
+        closed: true,
+      },
+      {
+        title: "Geography Teacher",
+        count: 1,
+        icon: <Mountain className="w-5 h-5" />,
+        color: "bg-sky-50 text-sky-700",
       },
     ],
   },
@@ -109,6 +122,20 @@ const PERKS = [
     desc: "A supportive environment where teachers are valued and heard.",
   },
 ];
+
+const openPositionsBySchool = SCHOOLS.map((school) => ({
+  school,
+  openPositions: school.positions.filter((position) => !position.closed),
+}));
+
+const openSeatCount = openPositionsBySchool.reduce(
+  (total, entry) => total + entry.openPositions.reduce((seats, position) => seats + position.count, 0),
+  0
+);
+
+const schoolsWithOpenSeatsCount = openPositionsBySchool.filter(
+  (entry) => entry.openPositions.length > 0
+).length;
 
 export default function Careers() {
   return (
@@ -164,7 +191,8 @@ export default function Careers() {
               </span>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900">Open Positions</h2>
               <p className="text-gray-500 text-sm mt-2">
-                Currently {SCHOOLS.reduce((sum, s) => sum + s.positions.reduce((acc, p) => acc + p.count, 0), 0)} seats open across 2 schools.
+                Currently {openSeatCount} {openSeatCount > 1 ? "seats" : "seat"} open across {schoolsWithOpenSeatsCount}{" "}
+                {schoolsWithOpenSeatsCount > 1 ? "schools" : "school"}.
               </p>
             </div>
             <a
@@ -188,24 +216,52 @@ export default function Careers() {
                   {school.positions.map((pos) => (
                     <div
                       key={pos.title}
-                      className="group bg-white rounded-xl p-5 border border-gray-100 hover:border-[#9e1b66]/30 hover:shadow-md transition-all"
+                      className={
+                        pos.closed
+                          ? "bg-gray-50 rounded-xl p-5 border border-dashed border-gray-200"
+                          : "group bg-white rounded-xl p-5 border border-gray-100 hover:border-[#9e1b66]/30 hover:shadow-md transition-all"
+                      }
                     >
                       <div className="flex items-start justify-between mb-4">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${pos.color}`}>
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            pos.closed ? "bg-gray-100 text-gray-400" : pos.color
+                          }`}
+                        >
                           {pos.icon}
                         </div>
-                        <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-600 text-[10px] font-semibold px-2 py-0.5 rounded-full">
-                          {pos.count} {pos.count > 1 ? "seats" : "seat"}
-                        </span>
+                        {pos.closed ? (
+                          <span className="inline-flex items-center gap-1 bg-gray-200 text-gray-500 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            Closed
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-600 text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                            {pos.count} {pos.count > 1 ? "seats" : "seat"}
+                          </span>
+                        )}
                       </div>
-                      <h4 className="font-semibold text-gray-900 text-base mb-1">{pos.title}</h4>
-                      <p className="text-xs text-gray-500 mb-4">Full-time · Christian · English-speaking</p>
-                      <a
-                        href="#apply"
-                        className="text-xs font-medium text-[#9e1b66] inline-flex items-center gap-1 group-hover:underline"
+                      <h4
+                        className={`font-semibold text-base mb-1 ${
+                          pos.closed ? "text-gray-400" : "text-gray-900"
+                        }`}
                       >
-                        Apply for this role <ArrowRight className="w-3 h-3" />
-                      </a>
+                        {pos.title}
+                      </h4>
+                      <p className={`text-xs mb-4 ${pos.closed ? "text-gray-400" : "text-gray-500"}`}>
+                        Full-time · Christian · English-speaking
+                      </p>
+                      {pos.closed ? (
+                        <span className="text-xs font-medium text-gray-400 inline-flex items-center gap-1">
+                          <XCircle className="w-3 h-3" /> Applications closed
+                        </span>
+                      ) : (
+                        <a
+                          href="#apply"
+                          className="text-xs font-medium text-[#9e1b66] inline-flex items-center gap-1 group-hover:underline"
+                        >
+                          Apply for this role <ArrowRight className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>
